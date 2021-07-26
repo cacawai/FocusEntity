@@ -115,6 +115,7 @@ extension FocusEntity {
   /// - Parameters:
   /// - Returns: ARRaycastResult if an existing plane geometry or an estimated plane are found, otherwise nil.
   internal func smartRaycast() -> ARRaycastResult? {
+    #if !targetEnvironment(simulator)
     // Perform the hit test.
     guard let (camPos, camDir) = self.getCamVector() else {
       return nil
@@ -134,6 +135,9 @@ extension FocusEntity {
 
     // 2. As a fallback, check for a result on estimated planes.
     return results.first(where: { $0.target == .estimatedPlane })
+    #else
+    return nil
+    #endif
   }
 
     /// Uses interpolation between orientations to create a smooth `easeOut` orientation adjustment animation.
