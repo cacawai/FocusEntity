@@ -162,7 +162,7 @@ open class FocusEntity: Entity, HasAnchoring, HasFocusEntity {
   internal var cameraAnchor: AnchorEntity!
 
   /// The focus square's current alignment.
-  internal var currentAlignment: ARPlaneAnchor.Alignment?
+  public var currentAlignment: ARPlaneAnchor.Alignment?
 
   /// The current plane anchor if the focus square is on a plane.
   public internal(set) var currentPlaneAnchor: ARPlaneAnchor?
